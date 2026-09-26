@@ -40,7 +40,7 @@
     "tiny-slider": "^2.9.4",
     "tiny-slider-react": "^0.5.7",
     "wow.js": "^1.2.2",
-    "zustand": "^5.0.3"
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
     "@types/node": "^26.6.3",
