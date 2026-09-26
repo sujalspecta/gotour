@@ -1534,11 +1534,6 @@ react-photoswipe-gallery@^4.1.2:
   resolved "https://registry.npmjs.org/react-photoswipe-gallery/-/react-photoswipe-gallery-4.1.2.tgz"
   integrity sha512-QfohXZVY3pXe0q5/+iH1G6Yx2xr5GsBxALT5S3c9GP1HLCechG4MG3IMXaoujatn/trG5CIlY44fmiuzW1vjjA==
 
-react-responsive-masonry@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.npmjs.org/react-responsive-masonry/-/react-responsive-masonry-2.7.1.tgz"
-  integrity sha512-Q+u+nOH87PzjqGFd2PgTcmLpHPZnCmUPREHYoNBc8dwJv6fi51p9U6hqwG8g/T8MN86HrFjrU+uQU6yvETU7cA==
-
 react-scroll-to-top@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/react-scroll-to-top/-/react-scroll-to-top-3.1.0.tgz"
