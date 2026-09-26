@@ -18,7 +18,7 @@
     "photoswipe": "^5.4.4",
     "rc-slider": "^11.1.9",
     "react": "^19.3.0",
-    "react-bootstrap": "^2.10.9",
+    "react-bootstrap": "^2.10.10",
     "react-calendar": "^5.1.0",
     "react-countup": "^6.5.3",
     "react-curved-text": "^3.0.1",
