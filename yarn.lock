@@ -1529,10 +1529,10 @@ react-modal-video@^2.0.2:
     core-js "^3.27.2"
     react-transition-group "^4.4.2"
 
-react-photoswipe-gallery@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.npmjs.org/react-photoswipe-gallery/-/react-photoswipe-gallery-3.1.1.tgz"
-  integrity sha512-2hQkUkELwGDSnxdXeOGCySOLiK5vlUFZn9HhwmCXZz0jTqQwG6zy09M6M/JypYFa3md9zd/XW0aUD39dqltzsw==
+react-photoswipe-gallery@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.npmjs.org/react-photoswipe-gallery/-/react-photoswipe-gallery-4.1.2.tgz"
+  integrity sha512-QfohXZVY3pXe0q5/+iH1G6Yx2xr5GsBxALT5S3c9GP1HLCechG4MG3IMXaoujatn/trG5CIlY44fmiuzW1vjjA==
 
 react-responsive-masonry@^2.7.1:
   version "2.7.1"
