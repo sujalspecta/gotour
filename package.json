@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "antd": "^6.6.5",
-    "bootstrap": "^5.3.5",
+    "bootstrap": "^5.3.8",
     "dayjs": "^1.11.13",
     "framer-motion": "^12.6.5",
     "gsap": "^3.12.7",
