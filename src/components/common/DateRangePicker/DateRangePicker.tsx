@@ -32,7 +32,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
   setDateRange,
 }) => {
   return (
-    <Space direction='vertical' size={12}>
+    <Space orientation='vertical' size={12}>
       <RangePicker
         className='custom-range-picker'
         value={dateRange}
