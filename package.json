@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "antd": "^5.24.9",
+    "antd": "^6.6.5",
     "bootstrap": "^5.3.5",
     "dayjs": "^1.11.13",
     "framer-motion": "^12.6.5",
