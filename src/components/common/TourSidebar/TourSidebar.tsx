@@ -84,7 +84,7 @@ const TourSidebar: React.FC = () => {
               <label htmlFor='date'>Activate Day</label>
               <DatePicker
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date: Date | null) => setStartDate(date)}
               />
             </div>
 

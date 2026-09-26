@@ -344,7 +344,7 @@ const TourListingOneDetails: React.FC = () => {
 
                         <DatePicker
                           selected={startDate}
-                          onChange={(date) => setStartDate(date)}
+                          onChange={(date: Date | null) => setStartDate(date)}
                         />
                         <i className='icon-calendar'></i>
                       </div>
@@ -352,7 +352,7 @@ const TourListingOneDetails: React.FC = () => {
                         <label htmlFor='checkout'>Time:</label>
                         <DatePicker
                           selected={startTime}
-                          onChange={(date) => setStartTime(date)}
+                          onChange={(date: Date | null) => setStartDate(date)}
                         />
                       </div>
                       <div className='sidebar-two__form__control'>
