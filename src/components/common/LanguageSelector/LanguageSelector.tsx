@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import './langusgeSelect.css'
+import "./langusgeSelect.css";
 
 const options = [
   { value: "English", label: "English" },
@@ -16,15 +16,19 @@ const LanguageSelector: React.FC = () => {
   return (
     <div className="top-one__language-sort">
       <Select
+        instanceId="language-selector"
         classNamePrefix="custom-select"
         value={selectedOption}
-        onChange={(option) => setSelectedOption(option!)}
+        onChange={(option) => {
+          if (option) {
+            setSelectedOption(option);
+          }
+        }}
         options={options}
         isSearchable={false}
         components={{
-          IndicatorSeparator: () => null, // removes the separator
+          IndicatorSeparator: () => null,
         }}
-        
       />
     </div>
   );

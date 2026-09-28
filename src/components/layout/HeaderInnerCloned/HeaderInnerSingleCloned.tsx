@@ -26,7 +26,7 @@ const HeaderInnerSingleCloned: React.FC = () => {
     changeSideBarDrawerStatus,
   } = useStore();
   const renderSubMenu = (subMenu: NavItem[]) => (
-    <ul className=''>
+    <ul className="">
       {subMenu.map((item: any, index: number) => (
         <li key={index} className={item.subMenu ? "dropdown" : ""}>
           <Link href={item.link}>{item.title}</Link>
@@ -46,24 +46,25 @@ const HeaderInnerSingleCloned: React.FC = () => {
         scrollToTop ? " active" : ""
       }`}
     >
-      <div className='container-fluid'>
-        <div className='main-header__inner'>
-          <div className='main-header__logo logo-retina'>
-            <Link href='/'>
+      <div className="container-fluid">
+        <div className="main-header__inner">
+          <div className="main-header__logo logo-retina">
+            <Link href="/">
               <Image
                 src={main_logo}
-                alt='gotur NextJs'
-                width='160'
-                height='45'
+                alt="gotur NextJs"
+                width={160}
+                height={45}
+                style={{ height: "auto" }}
               />
             </Link>
           </div>
 
-          <nav className='main-header__nav main-menu'>
-            <ul className='main-menu__list'>
+          <nav className="main-header__nav main-menu">
+            <ul className="main-menu__list">
               {/* Render Home menu with showcase */}
-              <li className='dropdown megamenu scrollToLink'>
-                <Link href='home'>Home</Link>
+              <li className="dropdown megamenu scrollToLink">
+                <Link href="home">Home</Link>
                 <DemoPages />
               </li>
 
@@ -72,42 +73,42 @@ const HeaderInnerSingleCloned: React.FC = () => {
               ))}
             </ul>
           </nav>
-          <div className='main-header__right'>
-            <div className='main-header__info'>
+          <div className="main-header__right">
+            <div className="main-header__info">
               <Link
                 onClick={(e) => {
                   e.preventDefault();
                   changeSearchPopupStatus();
                 }}
-                href='#'
-                className='search-toggler main-header__info__item'
+                href="#"
+                className="search-toggler main-header__info__item"
               >
                 <i
-                  className='icon-search-interface-symbol'
-                  aria-hidden='true'
+                  className="icon-search-interface-symbol"
+                  aria-hidden="true"
                 ></i>
-                <span className='sr-only'>Search</span>
+                <span className="sr-only">Search</span>
               </Link>
-              <Link href='cart' className='main-header__info__item'>
-                <i className='icon-shopping-carts' aria-hidden='true'></i>
-                <span className='sr-only'>Cart</span>
+              <Link href="cart" className="main-header__info__item">
+                <i className="icon-shopping-carts" aria-hidden="true"></i>
+                <span className="sr-only">Cart</span>
               </Link>
             </div>
 
-            <Link href='contact' className='gotur-btn main-header__btn'>
-              Get in touch <i className='icon-paper-plane'></i>
+            <Link href="contact" className="gotur-btn main-header__btn">
+              Get in touch <i className="icon-paper-plane"></i>
             </Link>
-            <div className='main-header__call'>
-              <div className='main-header__call__icon'>
-                <i className='icon-telephone'></i>
+            <div className="main-header__call">
+              <div className="main-header__call__icon">
+                <i className="icon-telephone"></i>
               </div>
-              <div className='main-header__call__content'>
-                <span className='main-header__call__subtitle'>Call Us Now</span>
-                <Link href='tel:+208-555-0112'>+208-555-0112</Link>
+              <div className="main-header__call__content">
+                <span className="main-header__call__subtitle">Call Us Now</span>
+                <Link href="tel:+208-555-0112">+208-555-0112</Link>
               </div>
             </div>
             <div
-              className='mobile-nav__btn mobile-nav__toggler'
+              className="mobile-nav__btn mobile-nav__toggler"
               onClick={handelClick}
             >
               <span></span>

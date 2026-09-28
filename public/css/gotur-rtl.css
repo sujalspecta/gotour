@@ -18691,3 +18691,10 @@ body.boxed-wrapper .testimonials-three__inner {
 .instagram-one__carousel {
   direction: ltr;
 }
+
+
+.main-header__logo .header-logo {
+  width: 160px !important;
+  height: auto !important;
+  max-width: 100%;
+}

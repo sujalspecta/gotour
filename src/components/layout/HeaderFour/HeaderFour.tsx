@@ -42,7 +42,7 @@ const HeaderFour: React.FC = () => {
         <div className='main-header__inner'>
           <div className='main-header__logo logo-retina'>
             <Link href='/'>
-              <Image src={main_logo} alt='gotur HTML' width='160' height='45' />
+              <Image src={main_logo} alt='gotur HTML' width='160' height='45'  style={{ width: "180px", height: "auto" }} />
             </Link>
           </div>
           <nav className='main-header__nav main-menu'>

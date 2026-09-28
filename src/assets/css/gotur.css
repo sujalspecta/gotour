@@ -19028,3 +19028,9 @@ margin:  0 10px;
     margin:  0 20px;
     }
 }
+
+.main-header__logo .header-logo {
+  width: 160px !important;
+  height: auto !important;
+  max-width: 100%;
+}

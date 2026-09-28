@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { mainSliderData } from "@/data/mainSliderThreeData";
@@ -21,8 +22,9 @@ interface SliderContent {
   videoId: string;
   buttonLink: string;
 }
+
 interface ImageElement {
-  id: Number;
+  id: number;
   image: StaticImageData;
 }
 
@@ -34,27 +36,24 @@ interface MainSliderData {
 }
 
 const MainSliderThree: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const {
+    buttonBg,
+    sliderItems,
+    imageElements,
+    elementTwo,
+  }: MainSliderData = mainSliderData;
 
-  if (!mounted) return null;
-
-  const { buttonBg, sliderItems, imageElements, elementTwo }: MainSliderData =
-    mainSliderData;
   const {
     tagLine,
     title,
-    titleSpan,
-    subtitle,
     thumbImage,
     text,
     buttonLink,
     videoId,
   }: SliderContent = sliderItems;
+
   const numberWords = [
     "one",
     "two",
@@ -70,89 +69,128 @@ const MainSliderThree: React.FC = () => {
 
   return (
     <>
-      <section className='main-slider-three' id='home'>
+      <section className="main-slider-three" id="home">
         <Container>
-          <Row className=' justify-content-start'>
+          <Row className="justify-content-start">
             <Col xxl={6} lg={12}>
-              <div className='main-slider-three__content'>
-                <h5 className='main-slider-three__sub-title main-three bw-split-in-left'>
-                  <TextAnimation text={tagLine} animationType='left' />
+              <div className="main-slider-three__content">
+                <h5 className="main-slider-three__sub-title main-three bw-split-in-left">
+                  <TextAnimation
+                    text={tagLine}
+                    animationType="left"
+                  />
                 </h5>
+
                 <h2
-                  className='main-slider-three__title main-three bw-split-in-left '
+                  className="main-slider-three__title main-three bw-split-in-left"
                   style={{ maxWidth: "760px" }}
                 >
-                  <TextAnimation text={title} animationType='left' />
+                  <TextAnimation
+                    text={title}
+                    animationType="left"
+                  />
                 </h2>
-                <div className='main-slider-three__text main-three bw-split-in-down'>
-                  <TextAnimation text={text} animationType='down' />
+
+                <div className="main-slider-three__text main-three bw-split-in-down">
+                  <TextAnimation
+                    text={text}
+                    animationType="down"
+                  />
                 </div>
-                <div className='main-slider-three__button'>
+
+                <div className="main-slider-three__button">
                   <Link
                     href={buttonLink}
-                    className='gotur-btn gotur-btn--primary'
+                    className="gotur-btn gotur-btn--primary"
                   >
-                    get in touch <i className='icon-paper-plane'></i>
+                    get in touch{" "}
+                    <i className="icon-paper-plane"></i>
                   </Link>
-                  <div className='main-slider-three__item-video'>
+
+                  <div className="main-slider-three__item-video">
                     <Link
-                      className='video-popup'
+                      className="video-popup"
                       href={videoId}
                       onClick={(e) => {
                         e.preventDefault();
                         setOpen(true);
                       }}
                     >
-                      <i className='fas fa-play'></i>
+                      <i className="fas fa-play"></i>
                     </Link>
+
                     <span>play reel</span>
                   </div>
                 </div>
               </div>
             </Col>
+
             <Col xxl={6}>
-              <div className='main-slider-three__thumb'>
-                <Image src={thumbImage} alt='thumb image' />
+              <div className="main-slider-three__thumb">
+                <Image
+                  src={thumbImage}
+                  alt="thumb image"
+                  priority
+                />
               </div>
             </Col>
           </Row>
         </Container>
 
         {/* Action Form Section */}
-        <div className='main-slider-three__action-form'>
-          <div className='container'>
-            <div className='main-slider-three__form'>
+        <div className="main-slider-three__action-form">
+          <div className="container">
+            <div className="main-slider-three__form">
               <BannerForm />
             </div>
           </div>
         </div>
 
-        <div className='main-slider-three__element'>
-          {imageElements.map((image: ImageElement, idx) => (
-            <div
-              key={idx}
-              className={
-                idx === 0
-                  ? "main-slider-three__element__item"
-                  : `main-slider-three__element__item-${
-                      numberWords[idx - 1] || idx
-                    }`
-              }
-            >
-              <Image src={image.image} alt={`slider element ${idx + 1}`} />
-            </div>
-          ))}
+        {/* Decorative Images */}
+        <div className="main-slider-three__element">
+          {imageElements.map(
+            (image: ImageElement, idx: number) => (
+              <div
+                key={image.id}
+                className={
+                  idx === 0
+                    ? "main-slider-three__element__item"
+                    : `main-slider-three__element__item-${
+                        numberWords[idx - 1] || idx
+                      }`
+                }
+              >
+                <Image
+                  src={image.image}
+                  alt={`slider element ${idx + 1}`}
+                  priority={idx === 2}
+                />
+              </div>
+            )
+          )}
         </div>
-        <div className='main-slider-three__element-two'>
-          <Image src={elementTwo} alt='element' />
+
+        {/* Second Decorative Element */}
+        <div className="main-slider-three__element-two">
+          <Image
+            src={elementTwo}
+            alt="element"
+          />
         </div>
-        <div className='main-slider-three__element-three'>
-          <span className='main-slider-three__element-three-item'></span>
-          <span className='main-slider-three__element-three-item'></span>
-          <span className='main-slider-three__element-three-item'></span>
+
+        {/* Decorative Dots */}
+        <div className="main-slider-three__element-three">
+          <span className="main-slider-three__element-three-item"></span>
+          <span className="main-slider-three__element-three-item"></span>
+          <span className="main-slider-three__element-three-item"></span>
         </div>
       </section>
-      <VideoModal isOpen={isOpen} setOpen={setOpen} id={videoId} />
+
+      <VideoModal
+        isOpen={isOpen}
+        setOpen={setOpen}
+        id={videoId}
+      />
     </>
   );
 };

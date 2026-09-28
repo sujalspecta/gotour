@@ -12,6 +12,7 @@ interface CustomReactSelectProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  instanceId?: string;
 }
 
 const CustomReactSelectTwo: React.FC<CustomReactSelectProps> = ({
@@ -19,8 +20,10 @@ const CustomReactSelectTwo: React.FC<CustomReactSelectProps> = ({
   value,
   onChange,
   placeholder = 'Select an option',
+  instanceId = 'custom-react-select-two',
 }) => {
-  const selectedOption = options.find((opt) => opt.value === value) || null;
+  const selectedOption =
+    options.find((opt) => opt.value === value) || null;
 
   const customStyles: StylesConfig<OptionType, false> = {
     control: (provided, state) => ({
@@ -37,41 +40,50 @@ const CustomReactSelectTwo: React.FC<CustomReactSelectProps> = ({
       color: 'var(--gotur-text, #595959)',
       borderRadius: '0px',
       border: '0px solid var(--gotur-border-color, #e5e5e5)',
-      minWidth:"182px",
-      boxShadow: state.isFocused ? '0 0 0 1px var(--gotur-border-color, #e5e5e5)' : 'none',
+      minWidth: '182px',
+      boxShadow: state.isFocused
+        ? '0 0 0 1px var(--gotur-border-color, #e5e5e5)'
+        : 'none',
       '&:hover': {
         borderColor: 'var(--gotur-border-color, #e5e5e5)',
       },
     }),
+
     menu: (provided) => ({
       ...provided,
       zIndex: 5,
     }),
+
     option: (provided, state) => ({
       ...provided,
       fontFamily: 'var(--gotur-font, "Plus Jakarta Sans", sans-serif)',
       fontWeight: 500,
       fontSize: '14px',
       textTransform: 'capitalize',
-      color: state.isSelected || state.isFocused ? '#fff' : 'var(--gotur-text, #595959)',
+      color:
+        state.isSelected || state.isFocused
+          ? '#fff'
+          : 'var(--gotur-text, #595959)',
       backgroundColor:
         state.isSelected || state.isFocused
           ? 'var(--gotur-base, #63AB45)'
           : 'transparent',
       '&:active': {
         backgroundColor: 'var(--gotur-base, #63AB45)',
-        
       },
     }),
+
     singleValue: (provided) => ({
       ...provided,
       color: 'var(--gotur-text, #595959)',
     }),
+
     dropdownIndicator: (provided) => ({
       ...provided,
       color: 'var(--gotur-black, #1d231f)',
       paddingRight: '10px',
     }),
+
     indicatorSeparator: () => ({
       display: 'none',
     }),
@@ -80,6 +92,7 @@ const CustomReactSelectTwo: React.FC<CustomReactSelectProps> = ({
   return (
     <div className="listing-from__control react-select-wrapper">
       <Select
+        instanceId={instanceId}
         options={options}
         value={selectedOption}
         onChange={(opt) => onChange(opt?.value || '')}

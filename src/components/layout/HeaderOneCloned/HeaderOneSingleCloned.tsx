@@ -26,7 +26,7 @@ const HeaderOneSingleCloned: React.FC = () => {
     changeSideBarDrawerStatus,
   } = useStore();
   const renderSubMenu = (subMenu: NavItem[]) => (
-    <ul className=''>
+    <ul className="">
       {subMenu.map((item: any, index: number) => (
         <li key={index} className={item.subMenu ? "dropdown" : ""}>
           <Link href={item.link}>{item.title}</Link>
@@ -49,20 +49,26 @@ const HeaderOneSingleCloned: React.FC = () => {
         scrollToTop ? " active" : ""
       }`}
     >
-      <div className='container-fluid'>
-        <div className='main-header__inner'>
-          <div className='main-header__logo logo-retina'>
-            <Link href='/'>
-              <Image src={main_logo} alt='gotur HTML' width='160' height='45' />
+      <div className="container-fluid">
+        <div className="main-header__inner">
+          <div className="main-header__logo logo-retina">
+            <Link href="/">
+              <Image
+                src={main_logo}
+                alt="gotur NextJs"
+                width={160}
+                height={45}
+                style={{ height: "auto" }}
+              />
             </Link>
           </div>
 
-          <div className='main-header__right'>
-            <nav className='main-header__nav main-menu'>
-              <ul className='main-menu__list'>
+          <div className="main-header__right">
+            <nav className="main-header__nav main-menu">
+              <ul className="main-menu__list">
                 {/* Render Home menu with showcase */}
-                <li className='dropdown megamenu'>
-                  <Link href='/'>Home</Link>
+                <li className="dropdown megamenu">
+                  <Link href="/">Home</Link>
                   <DemoPages />
                 </li>
 
@@ -72,40 +78,40 @@ const HeaderOneSingleCloned: React.FC = () => {
               </ul>
             </nav>
 
-            <div className='main-header__info'>
+            <div className="main-header__info">
               <Link
                 onClick={(e) => {
                   e.preventDefault();
                   changeSearchPopupStatus();
                 }}
-                href='#'
-                className='search-toggler main-header__info__item'
+                href="#"
+                className="search-toggler main-header__info__item"
               >
                 <i
-                  className='icon-search-interface-symbol'
-                  aria-hidden='true'
+                  className="icon-search-interface-symbol"
+                  aria-hidden="true"
                 ></i>
-                <span className='sr-only'>Search</span>
+                <span className="sr-only">Search</span>
               </Link>
-              <Link href='cart' className='main-header__info__item'>
-                <i className='icon-shopping-carts' aria-hidden='true'></i>
-                <span className='sr-only'>Cart</span>
+              <Link href="cart" className="main-header__info__item">
+                <i className="icon-shopping-carts" aria-hidden="true"></i>
+                <span className="sr-only">Cart</span>
               </Link>
             </div>
 
             <div
-              className='main-header__btn-popup main-header__element__btn'
+              className="main-header__btn-popup main-header__element__btn"
               onClick={changeSideBarDrawerStatus}
             >
-              <i className='icon-menu-bar'></i>
+              <i className="icon-menu-bar"></i>
             </div>
 
-            <Link href='contact' className='gotur-btn main-header__btn'>
-              Get in touch <i className='icon-paper-plane'></i>
+            <Link href="contact" className="gotur-btn main-header__btn">
+              Get in touch <i className="icon-paper-plane"></i>
             </Link>
 
             <div
-              className='mobile-nav__btn mobile-nav__toggler'
+              className="mobile-nav__btn mobile-nav__toggler"
               onClick={handelClick}
             >
               <span></span>

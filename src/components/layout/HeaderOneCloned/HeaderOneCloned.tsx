@@ -1,14 +1,16 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-import Link from "next/link"; // Assuming we're using Next.js for routing
-import { navItems, headerOneNavItems } from "@/data/navItems"; // Import the navItems data
+import { navItems, headerOneNavItems } from "@/data/navItems";
 import DemoPages from "@/components/common/DemoPages/DemoPages";
 import main_logo from "@/assets/images/logo-dark.png";
 import { usePathname } from "next/navigation";
 import useStore from "@/store/useStore";
 import useScrollUp from "@/hooks/useScrollUp";
+
 interface NavItem {
   id: number;
   title: string;
@@ -19,52 +21,76 @@ interface NavItem {
 const HeaderOneCloned: React.FC = () => {
   const scrollToTop = useScrollUp(500);
   const pathname = usePathname();
+
   const {
     changeSearchPopupStatus,
     changeMobileDrawerStatus,
     changeSideBarDrawerStatus,
   } = useStore();
+
   const renderSubMenu = (subMenu: NavItem[]) => (
-    <ul className=''>
-      {subMenu.map((item: any, index: number) => (
-        <li key={index} className={item.subMenu ? "dropdown" : ""}>
-          <Link href={item.link}>{item.title}</Link>
+    <ul>
+      {subMenu.map((item: NavItem, index: number) => (
+        <li
+          key={item.id ?? index}
+          className={item.subMenu ? "dropdown" : ""}
+        >
+          <Link href={item.link || "#"}>{item.title}</Link>
+
           {item.subMenu && renderSubMenu(item.subMenu)}
         </li>
       ))}
     </ul>
   );
-  const handelClick = () => {
+
+  const handleClick = () => {
     changeMobileDrawerStatus();
     console.log("clicked");
   };
+
   const nav =
     pathname === "/home1-one" || pathname === "/home3-one"
       ? headerOneNavItems
       : navItems;
+
   return (
     <header
-      className={`main-header main-header--one sticky-header sticky-header--normal sticky-header--cloned ${
+      className={`main-header main-header--one sticky-header sticky-header--normal sticky-header--cloned${
         scrollToTop ? " active" : ""
       }`}
     >
-      <div className='container-fluid'>
-        <div className='main-header__inner'>
-          <div className='main-header__logo logo-retina'>
-            <Link href='/'>
-              <Image src={main_logo} alt='gotur HTML' width='160' height='45' />
+      <div className="container-fluid">
+        <div className="main-header__inner">
+          {/* Logo */}
+          <div className="main-header__logo logo-retina">
+            <Link href="/">
+              <Image
+                src={main_logo}
+                alt="gotur NextJs"
+                width={160}
+                height={45}
+                style={{
+                  width: "160px",
+                  height: "auto",
+                }}
+                className="header-logo"
+                priority
+              />
             </Link>
           </div>
 
-          <div className='main-header__right'>
-            <nav className='main-header__nav main-menu'>
-              <ul className='main-menu__list'>
-                {/* Render Home menu with showcase */}
-                <li className='dropdown megamenu'>
-                  <Link href='/'>Home</Link>
+          {/* Right Side */}
+          <div className="main-header__right">
+            {/* Navigation */}
+            <nav className="main-header__nav main-menu">
+              <ul className="main-menu__list">
+                {/* Home */}
+                <li className="dropdown megamenu">
+                  <Link href="/">Home</Link>
                   <DemoPages />
                 </li>
 
+                {/* Dynamic Navigation */}
                 {nav.map((item: NavItem) => (
                   <li
                     className={`${item.subMenu ? "dropdown" : ""} ${
@@ -72,48 +98,76 @@ const HeaderOneCloned: React.FC = () => {
                     }`}
                     key={item.id}
                   >
-                    <Link href={item.link || "#"}>{item.title}</Link>
+                    <Link href={item.link || "#"}>
+                      {item.title}
+                    </Link>
+
                     {item.subMenu && renderSubMenu(item.subMenu)}
                   </li>
                 ))}
               </ul>
             </nav>
 
-            <div className='main-header__info'>
+            {/* Header Info */}
+            <div className="main-header__info">
+              {/* Search */}
               <Link
+                href="#"
                 onClick={(e) => {
                   e.preventDefault();
                   changeSearchPopupStatus();
                 }}
-                href='#'
-                className='search-toggler main-header__info__item'
+                className="search-toggler main-header__info__item"
               >
                 <i
-                  className='icon-search-interface-symbol'
-                  aria-hidden='true'
+                  className="icon-search-interface-symbol"
+                  aria-hidden="true"
                 ></i>
-                <span className='sr-only'>Search</span>
+
+                <span className="sr-only">Search</span>
               </Link>
-              <Link href='cart' className='main-header__info__item'>
-                <i className='icon-shopping-carts' aria-hidden='true'></i>
-                <span className='sr-only'>Cart</span>
+
+              {/* Cart */}
+              <Link
+                href="/cart"
+                className="main-header__info__item"
+              >
+                <i
+                  className="icon-shopping-carts"
+                  aria-hidden="true"
+                ></i>
+
+                <span className="sr-only">Cart</span>
               </Link>
             </div>
 
+            {/* Sidebar Button */}
             <div
-              className='main-header__btn-popup main-header__element__btn'
+              className="main-header__btn-popup main-header__element__btn"
               onClick={changeSideBarDrawerStatus}
+              role="button"
+              tabIndex={0}
+              aria-label="Open sidebar menu"
             >
-              <i className='icon-menu-bar'></i>
+              <i className="icon-menu-bar"></i>
             </div>
 
-            <Link href='contact' className='gotur-btn main-header__btn'>
-              Get in touch <i className='icon-paper-plane'></i>
+            {/* Contact Button */}
+            <Link
+              href="/contact"
+              className="gotur-btn main-header__btn"
+            >
+              Get in touch
+              <i className="icon-paper-plane"></i>
             </Link>
 
+            {/* Mobile Menu Button */}
             <div
-              className='mobile-nav__btn mobile-nav__toggler'
-              onClick={handelClick}
+              className="mobile-nav__btn mobile-nav__toggler"
+              onClick={handleClick}
+              role="button"
+              tabIndex={0}
+              aria-label="Open mobile menu"
             >
               <span></span>
               <span></span>

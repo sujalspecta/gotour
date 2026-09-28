@@ -35,10 +35,12 @@ interface AboutTwoData {
   aboutElenemtOne: StaticImageData;
   aboutElenemtTwo: StaticImageData;
 }
+
 interface AboutTwoProps {
   cta?: boolean;
   extraClass?: string;
 }
+
 const AboutTwo: React.FC<AboutTwoProps> = ({ cta, extraClass }) => {
   const {
     title,
@@ -53,137 +55,201 @@ const AboutTwo: React.FC<AboutTwoProps> = ({ cta, extraClass }) => {
     aboutElenemtOne,
     aboutElenemtTwo,
   }: AboutTwoData = aboutTwoData;
+
   const { ref, inView } = useInView({
     threshold: 1.0,
     triggerOnce: false,
   });
 
   return (
-    <section className={`about-two section-space ${extraClass}`} id='about'>
-      <div className='container'>
-        <div className='row gutter-y-40'>
-          <div className='col-lg-6'>
+    <section
+      className={`about-two section-space ${extraClass || ""}`}
+      id="about"
+    >
+      <div className="container">
+        <div className="row gutter-y-40">
+          {/* Left Side */}
+          <div className="col-lg-6">
             <div
-              className='about-two__thumb wow fadeInLeft'
-              data-wow-duration='1500ms'
-              data-wow-delay='300ms'
+              className="about-two__thumb wow fadeInLeft"
+              data-wow-duration="1500ms"
+              data-wow-delay="300ms"
             >
-              <div className='about-two__thumb__item'>
-                <Image src={aboutImage} alt='About Us' />
-              </div>
-              <div className='about-two__thumb__item-small'>
-                <Image src={aboutImageSmall} alt='About Us Small' />
+              {/* Main About Image */}
+              <div className="about-two__thumb__item">
+                <Image
+                  src={aboutImage}
+                  alt="About Us"
+                  width={aboutImage.width}
+                  height={aboutImage.height}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                />
               </div>
 
-              <div className='about-two__thumb__funfact'>
-                <div className='about-two__thumb__funfact__icon'>
+              {/* Small About Image */}
+              <div className="about-two__thumb__item-small">
+                <Image
+                  src={aboutImageSmall}
+                  alt="About Us Small"
+                  width={aboutImageSmall.width}
+                  height={aboutImageSmall.height}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                  }}
+                />
+              </div>
+
+              {/* Fun Fact */}
+              <div className="about-two__thumb__funfact">
+                <div className="about-two__thumb__funfact__icon">
                   <i className={funFactIcon}></i>
                 </div>
-                <div className='about-two__thumb__funfact__content count-box'>
-                  <h2 className='about-two__thumb__funfact__count' ref={ref}>
+
+                <div className="about-two__thumb__funfact__content count-box">
+                  <h2
+                    className="about-two__thumb__funfact__count"
+                    ref={ref}
+                  >
                     {inView && (
-                      <CountUp start={0} end={funFactCount} duration={1.5} />
+                      <CountUp
+                        start={0}
+                        end={funFactCount}
+                        duration={1.5}
+                      />
                     )}
 
                     <span>Years</span>
                   </h2>
-                  <p className='about-two__thumb__funfact__text'>
+
+                  <p className="about-two__thumb__funfact__text">
                     {funFactText}
                   </p>
                 </div>
               </div>
-              <div className='about-two__thumb__item-element'>
+
+              {/* Decorative Element */}
+              <div className="about-two__thumb__item-element">
                 <Image
                   src={aboutElenemtTwo}
-                  alt='Element Two'
-                  width={200}
-                  height={200}
+                  alt="Element Two"
+                  width={aboutElenemtTwo.width}
+                  height={aboutElenemtTwo.height}
+                  style={{
+                    width: "200px",
+                    height: "auto",
+                  }}
                 />
               </div>
             </div>
           </div>
 
-          <div className='col-lg-6'>
-            <div className='about-two__right'>
-              <div className='sec-title'>
-                <h6 className='sec-title__tagline bw-split-in-right'>
-                  <TextAnimation text='About company' animationType='right' />
+          {/* Right Side */}
+          <div className="col-lg-6">
+            <div className="about-two__right">
+              {/* Section Title */}
+              <div className="sec-title">
+                <h6 className="sec-title__tagline bw-split-in-right">
+                  <TextAnimation
+                    text="About company"
+                    animationType="right"
+                  />
                 </h6>
-                <h3 className='sec-title__title bw-split-in-left'>
+
+                <h3 className="sec-title__title bw-split-in-left">
                   {title.split("\n").map((word: string, index: number) => (
                     <TextAnimation
                       text={word}
-                      animationType='left'
+                      animationType="left"
                       key={index}
                     />
                   ))}
                 </h3>
               </div>
 
+              {/* Description */}
               <p
-                className='about-two__top__text wow fadeInUp'
-                data-wow-duration='1500ms'
-                data-wow-delay='300ms'
+                className="about-two__top__text wow fadeInUp"
+                data-wow-duration="1500ms"
+                data-wow-delay="300ms"
               >
                 {description}
               </p>
 
               {/* Features */}
-              <div className='about-two__feature'>
-                <div className='row gutter-y-20 gutter-x-20'>
-                  {featureItems.map((item: FeatureItem, index: number) => (
-                    <div className='col-xl-6 col-lg-12 col-md-6' key={index}>
+              <div className="about-two__feature">
+                <div className="row gutter-y-20 gutter-x-20">
+                  {featureItems.map(
+                    (item: FeatureItem, index: number) => (
                       <div
-                        className='about-two__feature-vestion wow fadeInUp'
-                        data-wow-duration='1500ms'
-                        data-wow-delay={`${300 + index * 100}ms`}
+                        className="col-xl-6 col-lg-12 col-md-6"
+                        key={index}
                       >
-                        <div className='about-two__feature_icon'>
-                          <i className={item.icon}></i>
-                        </div>
-                        <div className='about-two__feature-content'>
-                          <h5 className='about-two__feature-title'>
-                            {item.title}
-                          </h5>
-                          <p className='about-two__feature-text'>
-                            {item.description}
-                          </p>
+                        <div
+                          className="about-two__feature-vestion wow fadeInUp"
+                          data-wow-duration="1500ms"
+                          data-wow-delay={`${300 + index * 100}ms`}
+                        >
+                          <div className="about-two__feature_icon">
+                            <i className={item.icon}></i>
+                          </div>
+
+                          <div className="about-two__feature-content">
+                            <h5 className="about-two__feature-title">
+                              {item.title}
+                            </h5>
+
+                            <p className="about-two__feature-text">
+                              {item.description}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
               </div>
 
               {/* Button and Author */}
               <div
-                className='about-two__button wow fadeInUp'
-                data-wow-duration='1500ms'
-                data-wow-delay='300ms'
+                className="about-two__button wow fadeInUp"
+                data-wow-duration="1500ms"
+                data-wow-delay="300ms"
               >
                 <Link
-                  href='blog-details-left'
-                  className='gotur-btn gotur-btn--primary'
+                  href="blog-details-left"
+                  className="gotur-btn gotur-btn--primary"
                 >
                   Discover More{" "}
-                  <span className='icon'>
-                    <i className='icon-right'></i>
+                  <span className="icon">
+                    <i className="icon-right"></i>
                   </span>
                 </Link>
-                <div className='about-two__button__author'>
-                  <div className='about-two__button__author__thumb'>
+
+                {/* Author */}
+                <div className="about-two__button__author">
+                  <div className="about-two__button__author__thumb">
                     <Image
                       src={author.image}
-                      alt='author'
+                      alt="author"
                       width={56}
                       height={56}
+                      style={{
+                        width: "56px",
+                        height: "auto",
+                      }}
                     />
                   </div>
-                  <div className='about-two__button__author__content'>
-                    <h5 className='about-two__button__author__name'>
+
+                  <div className="about-two__button__author__content">
+                    <h5 className="about-two__button__author__name">
                       {author.name}
                     </h5>
-                    <span className='about-two__button__author__dec'>
+
+                    <span className="about-two__button__author__dec">
                       {author.desc}
                     </span>
                   </div>
@@ -194,15 +260,35 @@ const AboutTwo: React.FC<AboutTwoProps> = ({ cta, extraClass }) => {
         </div>
       </div>
 
-      {/* Client Carousel Section */}
-      {cta ? <ClientCarousel /> : ""}
+      {/* Client Carousel */}
+      {cta && <ClientCarousel />}
 
-      <div className='about-two__element-one'>
-        <Image src={aboutElenemtOne} alt='Element One' />
+      {/* Element One */}
+      <div className="about-two__element-one">
+        <Image
+          src={aboutElenemtOne}
+          alt="Element One"
+          width={aboutElenemtOne.width}
+          height={aboutElenemtOne.height}
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
       </div>
 
-      <div className='about-two__element-two'>
-        <Image src={aboutElenemtTwo} alt='Element Two' />
+      {/* Element Two */}
+      <div className="about-two__element-two">
+        <Image
+          src={aboutElenemtTwo}
+          alt="Element Two"
+          width={aboutElenemtTwo.width}
+          height={aboutElenemtTwo.height}
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
       </div>
     </section>
   );
